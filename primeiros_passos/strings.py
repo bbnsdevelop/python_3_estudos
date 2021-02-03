@@ -28,3 +28,19 @@ print(letra * 4)
 
 s = "Sammy"
 print(s[2:])
+
+
+# formatação de string
+s = "José"
+print('Olá %s. Seja bem vindo ao mundo Python' %(s))
+
+pontoFlutuante = 17.8972
+print("Formatando ponto flutuante: %1.2f" %(pontoFlutuante)) # arredonda 
+
+
+print('Olá %s. Sua compra foi de: %r' %(s, pontoFlutuante))
+
+teste = 'One: {a}, Two: {b}, Three: {c}'
+print(teste)
+
+print(teste.format(a = 1, b = "Dois", c = 3.3))
