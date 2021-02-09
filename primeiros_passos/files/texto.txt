@@ -1,0 +1,4 @@
+Teste para leitura do arquivi em Python
+Teste 1
+teste 2
+teste 3
