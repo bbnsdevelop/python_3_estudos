@@ -9,3 +9,6 @@ for n in range(5):
 numero = 4 * ((numero / 2) + 1)
 numero = numero + 0.25
 print(numero)
+
+raiz = 10 ** 2
+print(raiz)
