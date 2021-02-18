@@ -23,7 +23,6 @@ else:
     print('Não existe média abaixo de zero ou acima de: ', str(media))
 
 
-
 # tupas
 
 tuplas = (1,2,3,4,5,6)
@@ -35,3 +34,23 @@ tuplasDeLista = [(12, 2), (3,5), (7, 9)]
 
 for (t1, t2) in tuplasDeLista:
     print('mutiplicação de {} com {} é igual {}'.format(t1, t2, (t1 * t2 )))
+num = 0
+while num <=10:
+    print('interações', num)
+    num += 1
+
+num = 0
+while True:
+    num += 1
+
+    if num == 1:
+        pass
+    elif num == 5:
+        continue
+    elif num == 10:
+        break
+    print(num)
+
+# compreesão de lista
+lista = [ item for item in range(0,11)]
+print(lista)
