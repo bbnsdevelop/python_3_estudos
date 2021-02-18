@@ -14,3 +14,4 @@ else:
 
 if a == b or a == c:
     print('operador OR deu a condição ' + str(a))
+    
