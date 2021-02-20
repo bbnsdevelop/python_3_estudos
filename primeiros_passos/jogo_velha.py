@@ -6,7 +6,7 @@ def menu():
     continuar=1
     while continuar:
         continuar = int(input("0. Sair \n"+
-                              "1. Jogar novamente\n"))
+                              "1. Iniciar o Jogo\n"))
         if continuar:
             game()
         else:
