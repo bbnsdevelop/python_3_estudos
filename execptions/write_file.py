@@ -4,9 +4,13 @@
 
 def escreva():
     try:
-        file = open('testeFile.txt', 'w')
+        file = open('testeFile.txt', 'r')
         file.write('Testandooo')
-    except IOError:
+        print('Gravou com sucesso')
+    except IOError as e:
+        print('Erro ao escrever no arquivo', e)
+    finally:
+        print('Fechando arquivo')
         file.close()
 
 escreva()
