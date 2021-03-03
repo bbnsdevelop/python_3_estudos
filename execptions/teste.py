@@ -16,6 +16,7 @@ def leiaUmNumero():
                 continua = False
         except Exception as e:
             contErro += 1
+            print('Erro ao adicionar numero na lista ', e)
 
     exibaInformacoes(contErro, listaDeNumero)
 
