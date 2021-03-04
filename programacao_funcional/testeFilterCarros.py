@@ -16,19 +16,22 @@ def main():
     carros.append(corsa)
     carros.append(corsa_4)
 
-    # com lambda não funcionou, verificar
-    #map(calcular_15_porcento, list(filter(lambda c: c.get_qtd_portas() == 4, carros)))
-    #teste = list(filter(lambda c: c.get_qtd_portas() == 4, carros))
+    # com lambda
+    list(map(calcular_15_porcento, list(filter(lambda c: c.get_qtd_portas() == 4, carros))))
 
+    # com o for
+    #for carro in carros:
+        #if carro.get_qtd_portas() == 4:
+       #     calcular_15_porcento(carro)
+       # exibirCarro(carro)
+    carros.sort(key=lambda x: x.valor, reverse=False)
     for carro in carros:
-        if carro.get_qtd_portas() == 4:
-            calcular_15_porcento(carro)
         exibirCarro(carro)
-
 
 def calcular_15_porcento(carro):
     novoValor = ((carro.get_valor() * 15) / 100) + carro.get_valor()
     carro.set_valor(novoValor)
+    return carro
 
 
 def exibirCarro(carro):
