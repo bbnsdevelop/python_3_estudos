@@ -1,4 +1,4 @@
-myFile = open('primeiros_passos/files/texto.txt')
+myFile = open('fundamentos/files/texto.txt')
 
 print(myFile.readline())
 myFile.seek(0) # reseta a leitura e volta para o inicio
