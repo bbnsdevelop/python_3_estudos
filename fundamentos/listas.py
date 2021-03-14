@@ -5,13 +5,15 @@ print(minhaList)
 minhaList.extend([5, 9,7, 'A', 'teste', 'C', 'B', 'A'])
 
 print(minhaList)
-print(minhaList.pop()) # ultimo elemento
+# ultimo elemento
+print(minhaList.pop())
 
 print(minhaList)
+# indice zero
+print(minhaList.pop(0))
 
-print(minhaList.pop(0)) #indice zero
-
-minhaList.sort() # ordena
+# ordena
+minhaList.sort()
 
 print(minhaList)
 
@@ -31,3 +33,4 @@ print(outraLista)
 minhaLista = [1,2,3]
 for i in minhaList:
     print(i)
+
