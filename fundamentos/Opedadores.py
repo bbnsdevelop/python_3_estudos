@@ -19,6 +19,10 @@ def diferente(num1, num2):
 
 
 def elevado(num1, num2):
+    '''
+    params n1,n2
+    return n1 ** n2
+    '''
     print('num1 é elevado a num2? {}'.format(num1 ** num2))
 
 
