@@ -26,7 +26,8 @@ print(lista)
 print(type(lista))
 
 for l in lista:
-    if 'list' in str(type(l)):
+    if isinstance(l, list):
+        print('removido a lista: {} dentro da lista'.format(l))
         lista.remove(l)
 
 print(lista)

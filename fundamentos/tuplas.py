@@ -6,11 +6,11 @@
 # se assemelham bastante com listas
 
 
-t = (1,2,3,4)
-t = ('one', 2, 123,[1,9,8])
+t1 = (1, 2, 3, 4)
+t = ('one', 2, 123, [1, 9, 8])
 
 
-print(type([1,2,3]) == list)
+print(type([1, 2, 3]) == list)
 
 for index in t:
     if isinstance(index, str):
