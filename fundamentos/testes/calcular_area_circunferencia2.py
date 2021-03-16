@@ -22,4 +22,5 @@ def main():
     print('Área do círculo é: {:.2f}'.format(result))
 
 
-main()
+if __name__ == '__main__':
+    main()
