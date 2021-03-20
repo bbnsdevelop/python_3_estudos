@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+# coding: utf-8
+
+
+def fibo(limite):
+    penultimo = 0
+    ultimo = 1
+    print(f'{penultimo},{ultimo}', end=',')
+    while ultimo < limite:
+        penultimo, ultimo = ultimo, penultimo + ultimo
+        print(ultimo, end=',')
+
+
+if __name__ == '__main__':
+    fibo(1000)
+
