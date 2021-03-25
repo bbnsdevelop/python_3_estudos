@@ -28,7 +28,7 @@ def leitura():
         print('Error when was open file {}'.format(e))
     finally:
         file.close()
-    return sorted(peoples,  key=('age'))
+    return sorted(peoples, key=lambda pessoa: pessoa.age)
 
 
 def showInfo(peoples):
