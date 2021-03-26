@@ -12,6 +12,6 @@ double = [i * 2 for i in range(10)]
 print(double)
 
 
-doublePares = [i + 1 for i in range(10) if i % 2 == 0]
+doublePares = [i * 2 for i in range(10) if i % 2 == 0]
 
-print(double)
+print(doublePares)
