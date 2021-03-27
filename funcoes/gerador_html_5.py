@@ -1,8 +1,8 @@
 #!usr/bin/python3
 # coding: utf-8
 
-bloco_atrs = ('bloco_accessKy', 'bloco_id')
-ul_atrs = ('ul_id', 'ul_style')
+filtro_bloco = ('bloco_accessKy', 'bloco_id')
+filtro_ul = ('ul_id', 'ul_style')
 
 
 def get_atrs(informados, suportado):
@@ -12,13 +12,13 @@ def get_atrs(informados, suportado):
 def tag_bloco(conteudo, *args, classe='success', inline=False, **novos_atrs):
     tag = 'span' if inline else 'div'
     html = conteudo if not callable(conteudo) else conteudo(*args, **novos_atrs)
-    atributos = get_atrs(novos_atrs, bloco_atrs)
+    atributos = get_atrs(novos_atrs, filtro_bloco)
     return f'<{tag} {atributos} class="{classe}">{html}</{tag}>'
 
 
 def tag_lista(*itens, **novos_atrs):
     lista = ''.join((f'<li>{item}</li>' for item in itens))
-    return f'<ul {get_atrs(novos_atrs, ul_atrs)}>{lista}</ul>'
+    return f'<ul {get_atrs(novos_atrs, filtro_ul)}>{lista}</ul>'
 
 
 if __name__ == '__main__':
