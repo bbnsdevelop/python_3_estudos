@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # coding: utf-8
 
+from pacotes.p1 import modulo_soma
+
+
 def log(func):
     def decorator(*args, **kwargs):
         print(f'Inicio da chamada da funcção: {func.__name__}')
@@ -14,7 +17,7 @@ def log(func):
 
 @log
 def soma(x, y):
-    return x + y
+    return modulo_soma.soma(x, y)
 
 
 @log
