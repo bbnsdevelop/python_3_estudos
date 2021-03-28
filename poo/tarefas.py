@@ -33,7 +33,6 @@ class Tarefa:
         self.vencimento = vencimento
 
     def concluir(self):
-        self.vencimento = datetime.now()
         self.feito = True
 
     def add_vencimento(self, dias, minutos=0):
@@ -58,9 +57,22 @@ class Tarefa:
         return self.descricao
 
 
+class TarefaRecorrente(Tarefa):
+    def __init__(self, descricao, vencimento, dias=7):
+        super().__init__(descricao, vencimento)
+        self.dias = dias
+
+    def concluir(self):
+        super().concluir()
+        novo_vencimento = datetime.now() + timedelta(days=self.dias, minutes=1)
+        return TarefaRecorrente(self.descricao, novo_vencimento, self.dias)
+
+
 def main():
     project = Projeto('Casa')
     project.tarefas.append(Tarefa('Lavar roupas'))
+    project.tarefas.append(TarefaRecorrente('Trocar lençóis', datetime.now(), 7))
+    project.tarefas.append(project.find_tarefa('Trocar lençóis').concluir())
     project.add('Lavar Pratos')
     project.add('Recolher o lixo', datetime.now())
     project.add('Lavaro banheiro', datetime.now() + timedelta(days=3, minutes=12))
@@ -70,8 +82,10 @@ def main():
     print(project)
     tarefas_pendentes = []
 
-    for tarefa in project:
+    for tarefa in project.tarefas_pendentes():
         tarefas_pendentes.append(tarefa.descricao)
+
+    print(f'Total de Tarefas - {len(project.tarefas)}')
     print(f'Tarefas pendentes - {tarefas_pendentes}')
     print(f'Tarefas conclídas - {project.find_tarefa("Lavar Pratos").descricao}')
 
