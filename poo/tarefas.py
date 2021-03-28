@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # coding: utf-8
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class Projeto:
@@ -12,8 +12,8 @@ class Projeto:
     def __iter__(self):
         return self.tarefas.__iter__()
 
-    def add(self, descricao):
-        self.tarefas.append(Tarefa(descricao))
+    def add(self, descricao, vencimento=None):
+        self.tarefas.append(Tarefa(descricao, vencimento))
 
     def tarefas_pendentes(self):
         return [tarefa_pendente for tarefa_pendente in self.tarefas if not tarefa_pendente.feito]
@@ -26,16 +26,33 @@ class Projeto:
 
 
 class Tarefa:
-    def __init__(self, descricao):
+    def __init__(self, descricao, vencimento=None):
         self.descricao = descricao
         self.feito = False
         self.data_criacao = datetime.now()
+        self.vencimento = vencimento
 
     def concluir(self):
+        self.vencimento = datetime.now()
         self.feito = True
 
+    def add_vencimento(self, dias, minutos=0):
+        self.vencimento = datetime.now() + timedelta(days=dias, minutes=minutos)
+
     def show_status(self):
-        return self.descricao + ': (Conclída)' if self.feito else self.descricao + ': Aberta'
+        status = []
+        if self.feito:
+            status.append('Concluída')
+        elif self.vencimento:
+            if datetime.now() > self.vencimento:
+                status.append('Vencida')
+            else:
+                dias = (self.vencimento - datetime.now()).days
+                status.append(f'Venci em {dias} dias')
+        else:
+            status.append('A fazer')
+
+        return f'{self.descricao}: ' + ' '.join(status)
 
     def __str__(self):
         return self.descricao
@@ -45,8 +62,8 @@ def main():
     project = Projeto('Casa')
     project.tarefas.append(Tarefa('Lavar roupas'))
     project.add('Lavar Pratos')
-    project.add('Recolher o lixo')
-    project.add('Lavaro banheiro')
+    project.add('Recolher o lixo', datetime.now())
+    project.add('Lavaro banheiro', datetime.now() + timedelta(days=3, minutes=12))
 
     [tarefa.concluir() for tarefa in project.tarefas if tarefa.descricao == 'Lavar Pratos']
 
@@ -57,6 +74,17 @@ def main():
         tarefas_pendentes.append(tarefa.descricao)
     print(f'Tarefas pendentes - {tarefas_pendentes}')
     print(f'Tarefas conclídas - {project.find_tarefa("Lavar Pratos").descricao}')
+
+    print('----------------------------------------------------')
+
+    for tarefa in project:
+        print(f' - {tarefa.show_status()}')
+    print('----------------------------------------------------')
+
+    for tarefa in project:
+        if tarefa.descricao == 'Lavar roupas':
+            tarefa.add_vencimento(2, 30)
+        print(f' - {tarefa.show_status()}')
 
 
 if __name__ == '__main__':
