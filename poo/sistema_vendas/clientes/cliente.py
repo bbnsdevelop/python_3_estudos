@@ -16,5 +16,8 @@ class Cliente(Pessoa):
         return total
 
     def get_data_ultima_compra(self):
-        compra = self.compras[-1]
-        return compra.data
+        return None if not self.compras else sorted(self.compras, key=get_data)[-1].data
+
+
+def get_data(compra):
+    return compra.data
