@@ -6,6 +6,16 @@ class Humano:
 
     def __init__(self, nome):
         self.nome = nome
+        self._idade = None
+
+    def get_idade(self):
+        return self._idade
+
+    def set_idade(self, idade):
+        if idade < 0:
+            raise ValueError('Idade deve ser um número positivo!')
+        else:
+            self._idade = idade
 
     def das_cavernas(self):
         self.especie = 'Homo Neanderthalensis'
@@ -37,9 +47,12 @@ if __name__ == '__main__':
     jose = Humano('Jośe')
     grug = Humano('Grug').das_cavernas()
 
+    jose.set_idade(30)
+
     print(f'tipo humano {Humano.especie}')
     print(f'tipo humano das cavernas: {grug.especie}')
     print(f'tipo humano {jose.especie}')
+    print(f'Nome: {jose.nome} - Idade: {jose.get_idade()}')
 
     joao = HomoSapiens('João')
     ugga = Neanderthal('Ugga')
@@ -48,6 +61,8 @@ if __name__ == '__main__':
     print(f'{ugga.nome} Evolução (a partir da classe): {", ".join(ugga.especies())}')
     print(f'{joao.nome} É evoluído? {"Sim" if joao.is_evoluido() else "Não"}')
     print(f'{ugga.nome} É evoluído? {"Sim" if ugga.is_evoluido() else "Não"}')
-
-    print(f'{joao.nome} É evoluído? {"Sim" if joao.is_evoluido() else "Não"} Origem da evolução: {joao.origem_evolucao()[0]}')
-    print(f'{ugga.nome} É evoluído? {"Sim" if ugga.is_evoluido() else "Não"} Origem da evolução: {ugga.origem_evolucao()[0]}')
+    ugga.set_idade(400)
+    print(f'{joao.nome} É evoluído? {"Sim" if joao.is_evoluido() else "Não"} Origem da evolução: \
+            {joao.origem_evolucao()[0]} ')
+    print(f'{ugga.nome} É evoluído? {"Sim" if ugga.is_evoluido() else "Não"} Origem da evolução: \
+            {ugga.origem_evolucao()[0]} - Idade: {ugga.get_idade()}')
