@@ -19,6 +19,10 @@ class Humano:
         else:
             self._idade = idade
 
+    @property
+    def inteligente(self):
+        raise NotImplementedError('Propriedade não implementada')
+
     def das_cavernas(self):
         self.especie = 'Homo Neanderthalensis'
         return self
@@ -34,15 +38,23 @@ class Humano:
 
     @classmethod
     def origem_evolucao(cls):
-        return [ especie for especie in cls.especies() if cls.especie == especie]
+        return [especie for especie in cls.especies() if cls.especie == especie]
 
 
 class Neanderthal(Humano):
     especie = Humano.especies()[-2]
 
+    @property
+    def inteligente(self):
+        return False
+
 
 class HomoSapiens(Humano):
     especie = Humano.especies()[-1]
+
+    @property
+    def inteligente(self):
+        return True
 
 
 if __name__ == '__main__':
@@ -65,6 +77,6 @@ if __name__ == '__main__':
     print(f'{ugga.nome} É evoluído? {"Sim" if ugga.is_evoluido() else "Não"}')
     ugga.idade = 400
     print(f'{joao.nome} É evoluído? {"Sim" if joao.is_evoluido() else "Não"} Origem da evolução: \
-            {joao.origem_evolucao()[0]} ')
+            {joao.origem_evolucao()[0]} É inteligente? {joao.inteligente}')
     print(f'{ugga.nome} É evoluído? {"Sim" if ugga.is_evoluido() else "Não"} Origem da evolução: \
-            {ugga.origem_evolucao()[0]} - Idade: {ugga.idade}')
+            {ugga.origem_evolucao()[0]} - Idade: {ugga.idade} É inteligente? {ugga.inteligente}')
