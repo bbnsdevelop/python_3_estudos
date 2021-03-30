@@ -11,6 +11,11 @@ class Humano:
         self.especie = 'Homo Neanderthalensis'
         return self
 
+    @staticmethod
+    def especies():
+        adijetivos = ('Habils', 'Erectus', 'Neanderthalensis', 'Sapiens')
+        return ('Australopiteco', ) + tuple(f'Homo{adj}' for adj in adijetivos)
+
 
 if __name__ == '__main__':
     jose = Humano('Jośe')
