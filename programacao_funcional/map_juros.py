@@ -3,8 +3,17 @@
 
 
 def aplicar_multa(list_dict_book):
-    list_with_juros = map(lambda book: (book['price'] + (book['price'] * (20 / 100)) if book['price'] >= 100 else book), list_dict_book)
+    list_with_juros = map(juros, list_dict_book)
     return list_with_juros
+
+
+def juros(book):
+    if book['price'] >= 100:
+        valor = book['price'] + (book['price'] * (20 / 100))
+        book.update({'price': valor})
+        return book
+
+    return book
 
 
 if __name__ == '__main__':
@@ -16,5 +25,6 @@ if __name__ == '__main__':
         {"autor": "charlie", "price": 500, "tank number": 12, "type": "fish"},
         {"autor": "olly", "price": 800, "tank number": 34, "type": "turtle"}
     ]
+
     books_juros = aplicar_multa(books)
     print(list(books_juros))
