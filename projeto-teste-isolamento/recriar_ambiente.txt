@@ -1,0 +1,6 @@
+>> .venv ou a pasta de dependência não pode ser commitada
+>> comandos para recriar
+python3 -m virtualenv .venv
+source .venv/bin/activate
+>> para confirmar se foi criado o ambiente virtual
+echo $VIRTUAL_ENV
