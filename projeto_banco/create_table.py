@@ -56,6 +56,22 @@ def show_tables():
     print(tables)
 
 
+def alter_table():
+    query = """
+        ALTER TABLE contatos ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY
+    """
+    tables = []
+    with get_connection() as connection:
+        try:
+            cursor = connection.cursor()
+            cursor.execute(query)
+            for table in enumerate(cursor):
+                tables.append(table[1])
+        except ProgrammingError as e:
+            print(f'Erro ao executar script ALTER - DDL. Error:{e.msg}')
+
+
 if __name__ == '__main__':
     create_table()
     show_tables()
+    alter_table()
