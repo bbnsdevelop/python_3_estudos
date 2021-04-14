@@ -10,7 +10,7 @@ def select_contatos():
     contatos = []
     with get_connection() as connection:
         try:
-            sql = 'SELECT id, nome, tel FROM contatos'
+            sql = 'SELECT id, nome, tel FROM contatos ORDER BY nome'
             cursor = connection.cursor()
             cursor.execute(sql)
             for response in cursor.fetchall():
