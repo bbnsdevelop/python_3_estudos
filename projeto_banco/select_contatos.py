@@ -40,6 +40,19 @@ def select_contato_by_id(id):
     print(contato)
 
 
+def delete_contato_by_id(id):
+    with get_connection() as connection:
+        try:
+            sql = 'DELETE FROM contatos WHERE id = %s'
+            cursor = connection.cursor()
+            cursor.execute(sql, (id, ))
+            connection.commit()
+        except ProgrammingError as e:
+            print(f'Erro ao deletar contato por id {e.msg}')
+        else:
+            print(f'{cursor.rowcount} registro(s) deletad(s).')
+
+
 def select_contato_by_name(name):
     contatos = []
     with get_connection() as connection:
@@ -63,5 +76,4 @@ if __name__ == '__main__':
     # select_contato_by_id('4; drop table emails') # sql injection
     print('------------Buscando-pelo-nome----------------')
     select_contato_by_name('ca')
-
-
+    delete_contato_by_id(8)
