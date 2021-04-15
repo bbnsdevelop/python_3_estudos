@@ -53,6 +53,19 @@ def delete_contato_by_id(id):
             print(f'{cursor.rowcount} registro(s) deletad(s).')
 
 
+def update_contato_by_id(contato):
+    with get_connection() as connection:
+        try:
+            sql = 'UPDATE contatos SET nome = %s, tel = %s WHERE id = %s'
+            cursor = connection.cursor()
+            cursor.execute(sql, contato)
+            connection.commit()
+        except ProgrammingError as e:
+            print(f'Erro ao atualizar contato por id {e.msg}')
+        else:
+            print(f'{cursor.rowcount} registro(s) atualidado(s).')
+
+
 def select_contato_by_name(name):
     contatos = []
     with get_connection() as connection:
@@ -77,3 +90,5 @@ if __name__ == '__main__':
     print('------------Buscando-pelo-nome----------------')
     select_contato_by_name('ca')
     delete_contato_by_id(8)
+    contato_update = ('Mario Martins', '9822-8875', 5)
+    update_contato_by_id(contato_update)
