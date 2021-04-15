@@ -11,7 +11,6 @@ def include_grupos():
         ('Trabalho',),
         ('Inglês', ),
         ('Python',)
-
     )
     with get_connection() as connection:
         try:
