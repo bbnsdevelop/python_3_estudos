@@ -22,6 +22,39 @@ def select_contatos():
         print(contato)
 
 
+def select_contatos_limit():
+    contatos = []
+    with get_connection() as connection:
+        try:
+            sql = 'SELECT id, nome, tel FROM contatos LIMIT 5'
+            cursor = connection.cursor()
+            cursor.execute(sql)
+            for response in cursor.fetchall():
+                contatos.append(Contato(*response))
+        except ProgrammingError as e:
+            print(f'Erro ao buscar contatos {e.msg}')
+
+    for contato in contatos:
+        print(contato)
+
+
+def select_contatos_limit_offset():
+    contatos = []
+    with get_connection() as connection:
+        try:
+            sql = 'SELECT id, nome, tel FROM contatos LIMIT %s OFFSET %s'
+            params = (3, 5)
+            cursor = connection.cursor()
+            cursor.execute(sql, params)
+            for response in cursor.fetchall():
+                contatos.append(Contato(*response))
+        except ProgrammingError as e:
+            print(f'Erro ao buscar contatos {e.msg}')
+
+    for contato in contatos:
+        print(contato)
+
+
 def select_contato_by_id(id):
     contato = None
     with get_connection() as connection:
@@ -89,6 +122,12 @@ if __name__ == '__main__':
     # select_contato_by_id('4; drop table emails') # sql injection
     print('------------Buscando-pelo-nome----------------')
     select_contato_by_name('ca')
+    print('------------Deletar-pelo-id----------------')
     delete_contato_by_id(8)
+    print('------------update-contato---------------')
     contato_update = ('Mario Martins', '9822-8875', 5)
     update_contato_by_id(contato_update)
+    print('------------Buscando-limite-5----------------')
+    select_contatos_limit()
+    print('------------Buscando-limite-offset----------------')
+    select_contatos_limit_offset()
