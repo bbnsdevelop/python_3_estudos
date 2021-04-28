@@ -43,23 +43,23 @@ print(teste)
 
 print(teste.format(a=1, b="Dois", c=3.3))
 
-frase = 'testando, a, linguagem, Python'
+frase_split = 'testando, a, linguagem, Python'
 
-if 'py' in frase:
+if 'py' in frase_split:
     print('py está na frase')
 else:
     print('py Não na frase')
 
 
-if 'ingua' in frase:
+if 'ingua' in frase_split:
     print('ingua está na frase')
 else:
     print('ingua Não na frase')
 
-print(len(frase))
+print(len(frase_split))
 
-print(not 'Py' not in frase)
-separadas = frase.split(',')
+print(not 'Py' not in frase_split)
+separadas = frase_split.split(',')
 for index, s in enumerate(separadas):
     separadas[index] = s.strip()
 
