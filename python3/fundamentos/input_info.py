@@ -21,17 +21,18 @@ def is_int(val):
 def is_number(val):
     return is_int(val) or is_float(val)
 
+if __name__ == '__main__':
 
-###########
-#  USAGE  #
-###########
+    ###########
+    #  USAGE  #
+    ###########
 
-# Float
-print(is_float('-101.0112'))
+    # Float
+    print(is_float('-101.0112'))
 
-print(is_int('-1010112'))
+    print(is_int('-1010112'))
 
-print(is_number('-1010.112'))
+    print(is_number('-1010.112'))
 
-# False
-print(is_number('123a'))
+    # False
+    print(is_number('123a'))
