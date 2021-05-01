@@ -30,6 +30,3 @@ def get_config():
         database=configs[4]
     )
     return params
-
-
-get_config()
