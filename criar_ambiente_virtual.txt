@@ -7,3 +7,12 @@ source .venv/bin/activate
 
 desativa o ambiente virtual
 deactivate
+
+
+crie o arquivo requerimenrs.txt na raiz do projeto
+seria o gerenciador de dependência
+
+use o comando 
+pip install -R requerimenrs.txt
+
+irá insralar as dependências listadas no arquivo
