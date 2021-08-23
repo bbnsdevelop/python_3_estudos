@@ -16,3 +16,11 @@ use o comando
 pip install -R requerimenrs.txt
 
 irá insralar as dependências listadas no arquivo
+
+
+***************************************************************
+para criar um ambiente virtualizado no python versão 2.7
+
+virtualenv --python=/usr/bin/python2.7 venv
+source venv/bin/activate
+pip --version
